@@ -1,11 +1,12 @@
 package com.examportalv1.controller;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.examportalv1.models.Users;
 import com.examportalv1.repo.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+
 
 @RestController
 @RequestMapping("/user")
@@ -19,5 +20,9 @@ public class UserController {
         System.out.println(userObject.getId());
         return userObject;
 
+    }
+    @GetMapping("/{userId}")
+    public String getUserObject(@PathVariable ("userId") Long userId){
+        return "this.userRepository.findById(userId)";
     }
 }
